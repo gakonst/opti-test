@@ -8,13 +8,16 @@
 name: Publish to Dockerhub
 
 on:
-  push:
-    tags:
-    - '**'
+  release:
+    types: [published]
 
 jobs:
   # pushes the base builder image to dockerhub
   publish-builder:
+    if: |
+        contains(github.ref, "@eth-optimism/batch-submitter") || 
+        contains(github.ref, "@eth-optimism/data-transport-layer") ||
+        contains(github.ref, "@eth-optimism/message-relayer") ||
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -89,32 +92,21 @@ jobs:
 
 
   publish-services:
-    runs-on: ubuntu-latest
+    if: contains(github.ref, ${{ matrix.service }})
     needs: publish-builder
 
     strategy:
       matrix:
-        service: [ 'batch_submitter' ]
+        service: [ 'batch-submitter', 'message-relayer', 'data-transport-layer' ]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Docker meta
-        id: meta
-        uses: crazy-max/ghaction-docker-meta@v2
-        with:
-          images: ethereumoptimism/${{ matrix.service }}
-          tags: |
-            type=schedule
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-            type=sha
-
-      - name: Get meta outputs
+      - name: Set version
+        id: version
         run: |
-            echo "meta ${{ steps.meta.outputs.tags }}"
+            VERSION=`cat packages/${{ matrix.service }}/package.json | jq -r '.version'`
+            echo "GOT VERSION $VERSION"
+            echo "::set-output tag=${VERSION}"
 

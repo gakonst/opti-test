@@ -1,0 +1,53 @@
+# On each version tagged, this workflow proceeds to publish:
+# 1. L2geth, semantically versioned
+# 2. A typescript builder image, tagged with the current commit at the main branch.
+# This allows all packages to be independently versioned, while ensuring that they
+# all depend on the same monorepo builder version
+# 3. Each of the typescript services, semantically versioned, using the previously
+# published image as a base.
+name: Publish to Dockerhub
+
+on:
+  push:
+    tags:        
+      - '*'
+jobs:
+  # pushes the base builder image to dockerhub
+  publish-builder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Docker meta
+        id: meta
+        uses: crazy-max/ghaction-docker-meta@v2
+        with:
+          images: ethereumoptimism/builder
+          tags: type=sha,prefix=
+
+      - name: Get meta outputs
+        run: |
+            echo "meta ${{ steps.meta.outputs.tags }}"
+
+            # - name: Set up Docker Buildx
+            #   uses: docker/setup-buildx-action@v1
+
+            # - name: Login to Docker Hub
+            #   uses: docker/login-action@v1
+            #   with:
+            #     username: ${{ secrets.DOCKERHUB_ACCESS_TOKEN_USERNAME }}
+            #     password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN_SECRET }}
+
+            # # pushes a builder image tagged with the commit hash, to be used by the
+            # # other images
+            # - name: Build and push
+            #   id: docker_build
+            #   uses: docker/build-push-action@v2
+            #   with:
+            #     context: .
+            #     file: ./ops/docker/Dockerfile.monorepo
+            #     push: true
+            #     tags: ${{ steps.meta.outputs.tags }}
+    # TODO: add matrix
+    #   type=semver,pattern={{version}},event=tag

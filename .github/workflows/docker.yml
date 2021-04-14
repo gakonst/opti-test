@@ -93,7 +93,6 @@ jobs:
 
 
   publish-services:
-    if: contains(github.ref, ${{ matrix.service }})
     needs: publish-builder
 
     strategy:
@@ -102,9 +101,11 @@ jobs:
 
     steps:
       - name: Checkout
+        if: contains(github.ref, ${{ matrix.service }})
         uses: actions/checkout@v2
 
       - name: Set version
+        if: contains(github.ref, ${{ matrix.service }})
         id: version
         run: |
             VERSION=`cat packages/${{ matrix.service }}/package.json | jq -r '.version'`

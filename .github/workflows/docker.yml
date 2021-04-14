@@ -15,10 +15,10 @@ on:
 jobs:
   # pushes the base builder image to dockerhub
   publish-builder:
-    if: |
-      contains(github.ref, "@eth-optimism/batch-submitter") || 
-      contains(github.ref, "@eth-optimism/data-transport-layer") ||
-      contains(github.ref, "@eth-optimism/message-relayer")
+    # if: |
+    #   contains(github.ref, "@eth-optimism/batch-submitter") || 
+    #   contains(github.ref, "@eth-optimism/data-transport-layer") ||
+    #   contains(github.ref, "@eth-optimism/message-relayer")
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

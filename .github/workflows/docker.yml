@@ -70,7 +70,7 @@ jobs:
         id: meta
         uses: crazy-max/ghaction-docker-meta@v2
         with:
-          images: ethereumoptimism/{{ matrix.service }}
+          images: ethereumoptimism/${{ matrix.service }}
           tags: |
             type=schedule
             type=ref,event=branch

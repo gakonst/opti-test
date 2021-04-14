@@ -14,6 +14,37 @@ on:
     tags:        
       - '*'
 jobs:
+  publish-services:
+    needs: publish-builder
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 'batch_submitter' ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Docker meta
+        id: meta
+        uses: crazy-max/ghaction-docker-meta@v2
+        with:
+          images: ethereumoptimism/{{ matrix.service }}
+
+      - name: Get meta outputs
+        tags: |
+            type=schedule
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha
+
+      - name: Get meta outputs
+        run: |
+            echo "meta ${{ steps.meta.outputs.tags }}"
+
   # pushes the base builder image to dockerhub
   publish-builder:
     runs-on: ubuntu-latest
@@ -26,7 +57,6 @@ jobs:
         uses: crazy-max/ghaction-docker-meta@v2
         with:
           images: ethereumoptimism/builder
-          tags: type=sha,prefix=
 
       - name: Get meta outputs
         run: |

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.2
+
+### Patch Changes
+
+- 0776a5a: asdf
+- 0171b58: test
+- 114d688: adsffds
+- bc31e99: asdf
+
 ## 0.2.1
 
 ### Patch Changes

@@ -48,11 +48,13 @@ jobs:
       # Conditional on the release being executed, we unbundle some env vars
       - name: Get version tags from each published version
         id: packages
-        # if: steps.release.outputs.published == 'true'
+        if: steps.release.outputs.published == 'true'
         run: |
-          # array of { name: , version: }
-          echo ${{ steps.release.outputs.published }}
-          echo ${{ steps.release.outputs.publishedPackages }}
+          DATA=${{ toJSON(steps.release.outputs.publishedPackages) }}
+          echo $DATA
+          # echo "::set-output name=l2geth::$(echo $DATA | jq )"
+          # array of { name: @eth-optimism/l2geth, version: 0.2.10 } ->
+          # l2geth=0.2.10
 
           # # if published -> login to dockerhub
           # - name: Login to Docker Hub

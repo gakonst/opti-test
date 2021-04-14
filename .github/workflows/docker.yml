@@ -9,6 +9,8 @@ name: Publish to Dockerhub
 
 on:
   push:
+    branches:
+      - '**'
     tags:        
       - '*'
 jobs:

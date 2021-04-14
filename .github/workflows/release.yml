@@ -48,8 +48,10 @@ jobs:
       # Conditional on the release being executed, we unbundle some env vars
       - name: Get version tags from each published version
         id: packages
-        if: steps.release.published == true
+        # if: steps.release.outputs.published == 'true'
         run: |
+          # array of { name: , version: }
+          echo ${{ steps.release.outputs.published }}
           echo ${{ steps.release.outputs.publishedPackages }}
 
           # # if published -> login to dockerhub

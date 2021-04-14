@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.10
+
+### Patch Changes
+
+- 0fc6b3a: asdf
+
 ## 0.2.9
 
 ### Patch Changes

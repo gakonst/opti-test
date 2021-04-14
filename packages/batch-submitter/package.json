@@ -1,6 +1,6 @@
 {
   "name": "@eth-optimism/batch-submitter",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "private": true,
   "description": "[Optimism] Batch submission for sequencer & aggregators",
   "main": "dist/index",
@@ -39,7 +39,7 @@
     "bluebird": "^3.7.2",
     "dotenv": "^8.2.0",
     "ethers": "5.0.0",
-    "@eth-optimism/contracts": "^0.2.2"
+    "@eth-optimism/contracts": "^0.2.5"
   },
   "devDependencies": {
     "@eth-optimism/smock": "^1.0.0",

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.5
+
+### Patch Changes
+
+- 12d575c: asdffd
+
 ## 0.2.4
 
 ### Patch Changes

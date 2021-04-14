@@ -9,10 +9,9 @@ name: Publish to Dockerhub
 
 on:
   push:
-    branches:
-      - '**'
     tags:        
       - '*'
+
 jobs:
   # pushes the base builder image to dockerhub
   publish-builder:
@@ -51,6 +50,7 @@ jobs:
     #   type=semver,pattern={{version}},event=tag
 
   publish-geth:
+    if: contains(github.ref, "@eth-optimism/l2geth")
     runs-on: ubuntu-latest
 
     steps:

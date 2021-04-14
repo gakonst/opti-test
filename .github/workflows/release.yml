@@ -36,10 +36,17 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
-      - name: Create Release Pull Request
+      - name: Publish to NPM or create release pull request
         uses: changesets/action@master
+        id: release
         with:
           publish: yarn release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Unbundle the published images
+        run: |
+          echo ${{ steps.release.publishedPackages }}
+
+    # publish matrix from the published packages

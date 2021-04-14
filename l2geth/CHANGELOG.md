@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.4
+
+### Patch Changes
+
+- c237e92: asdf
+
 ## 0.2.3
 
 ### Patch Changes

@@ -11,6 +11,8 @@ on:
   push:
     branches:
       - master
+    tags:
+      - '**'
 
 jobs:
   # pushes the base builder image to dockerhub

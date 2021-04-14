@@ -9,15 +9,15 @@ name: Publish to Dockerhub
 
 on:
   release:
-    types: [published]
+    types: [created, published]
 
 jobs:
   # pushes the base builder image to dockerhub
   publish-builder:
-    if: |
-        contains(github.ref, "@eth-optimism/batch-submitter") || 
-        contains(github.ref, "@eth-optimism/data-transport-layer") ||
-        contains(github.ref, "@eth-optimism/message-relayer") ||
+      # if: |
+      #     contains(github.ref, "@eth-optimism/batch-submitter") || 
+      #     contains(github.ref, "@eth-optimism/data-transport-layer") ||
+      #     contains(github.ref, "@eth-optimism/message-relayer") ||
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -53,7 +53,7 @@ jobs:
     #   type=semver,pattern={{version}},event=tag
 
   publish-geth:
-    if: contains(github.ref, "@eth-optimism/l2geth")
+      # if: contains(github.ref, "@eth-optimism/l2geth")
     runs-on: ubuntu-latest
 
     steps:

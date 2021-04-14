@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.7
+
+### Patch Changes
+
+- f518a9f: adsffad
+
 ## 0.2.6
 
 ### Patch Changes

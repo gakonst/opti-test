@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.6
+
+### Patch Changes
+
+- c99fd40: adadfsdfas
+
 ## 0.2.5
 
 ### Patch Changes

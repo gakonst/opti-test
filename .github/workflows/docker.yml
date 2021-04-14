@@ -9,8 +9,8 @@ name: Publish to Dockerhub
 
 on:
   push:
-    tags:        
-      - '**'
+    tags:
+    - '**'
 
 jobs:
   # pushes the base builder image to dockerhub

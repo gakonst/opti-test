@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+### Patch Changes
+
+- 5a17ea5: test
+
 ## 0.2.1
 
 ### Patch Changes

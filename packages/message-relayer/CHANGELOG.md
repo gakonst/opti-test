@@ -1,5 +1,11 @@
 # @eth-optimism/message-relayer
 
+## 0.0.5
+
+### Patch Changes
+
+- fc6c6e1: one more patch of beauty
+
 ## 0.0.4
 
 ### Patch Changes

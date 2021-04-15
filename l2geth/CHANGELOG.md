@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.5
+
+### Patch Changes
+
+- fc6c6e1: one more patch of beauty
+
 ## 0.2.4
 
 ### Patch Changes

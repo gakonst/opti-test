@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.6
+
+### Patch Changes
+
+- 14d26fc: fix bug
+
 ## 0.2.5
 
 ### Patch Changes

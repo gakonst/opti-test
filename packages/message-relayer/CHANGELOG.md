@@ -1,5 +1,11 @@
 # @eth-optimism/message-relayer
 
+## 0.0.4
+
+### Patch Changes
+
+- a705b25: asdfafsdafd
+
 ## 0.0.3
 
 ### Patch Changes

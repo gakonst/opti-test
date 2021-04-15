@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.4
+
+### Patch Changes
+
+- a705b25: asdfafsdafd
+
 ## 0.2.3
 
 ### Patch Changes
